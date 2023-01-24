@@ -6,12 +6,10 @@ class Carnivore(Agent):
     def __init__(self, body):
         super().__init__(body)
         self.name = "Carnivore"
-        self.body.color = (255, 255, 0)
-        self.proiesName = ["Herbivore"]
-        self.predateursNames = ["SuperPredateur", "Decomposeur"]
+        self.body.color = (255, 255, 0) # jaune
+        self.proiesNames = ["Herbivore"]
+        self.predateursNames = ["SuperPredateur"]
+        self.amisNames = []
         self.comportement = None
 
-    def update(self):
-        super().update()
-        pass;
 
