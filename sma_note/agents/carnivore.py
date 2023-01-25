@@ -10,6 +10,5 @@ class Carnivore(Agent):
         self.proiesNames = ["Herbivore"]
         self.predateursNames = ["SuperPredateur"]
         self.amisNames = []
-        self.comportement = None
 
 

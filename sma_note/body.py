@@ -6,6 +6,7 @@ from pygame import Vector2
 import core
 from fustrum import Fustrum
 
+
 class Body(object):
 
     def __init__(self):
@@ -19,10 +20,11 @@ class Body(object):
         self.vitesse = Vector2(random.randint(-5, 5), random.randint(-5, 5))
         self.position = Vector2(random.randint(0, core.WINDOW_SIZE[0]), random.randint(0, core.WINDOW_SIZE[1]))
         self.acceleration = Vector2()
-        self.fustrum = Fustrum(20, self)
+        self.fustrum = Fustrum(50, self)
         self.mass = 10
         self.maxForce = 0.1
         self.perception = 100
+
 
     def update(self):
         if self.estMort:
@@ -38,7 +40,7 @@ class Body(object):
 
         #Trop vieux
         if datetime.datetime.now() > self.esperanceVie:
-            print("Mort d'age")
+            print(self.name, "est mort de vieillesse")
             self.estMort = True
             return
 
@@ -49,8 +51,6 @@ class Body(object):
             else:
                 self.dort = False
 
-            if self.niveauFaim > 0:
-                self.niveauFaim -= 0.25
         else:
             self.niveauFatigue += 1
 
@@ -61,30 +61,24 @@ class Body(object):
             self.dort = False
 
         #Faim
-        if self.dort:
-            if self.niveauFaim > 0:
-                self.niveauFaim -= 1
-        else:
-            self.niveauFaim += 0.5
+        if not self.dort:
+            self.niveauFaim += 1
 
         if self.niveauFaim >= self.maxFaim:
             self.estMort = True
+            print(self.name, "est mort de faim")
             return
 
-        #Reproduction
+        #Reproduction (l'envie de se reproduire augmente lorsqu'on a très peu faim et très peu fatigué)
         if self.niveauFaim < (self.maxFaim * 0.1) and self.niveauFatigue < (self.maxFatigue * 0.1):
-            self.niveauReproduction += 10*random.randint(1,5)
+            self.niveauReproduction += random.randint(1,10)
 
-
-        if self.niveauReproduction >= self.maxReproduction and not self.dort:
-            print(self.niveauReproduction)
-            self.reproduction()
+        #Pour se reproduire, il faut avoir un niveau de reproduction assez élevé et être assez vieux
+        if self.niveauReproduction >= self.maxReproduction and not self.dort and self.dateNaissance + datetime.timedelta(seconds=10) < datetime.datetime.now():
             self.niveauReproduction = 0
+            self.reproduction()
 
     def show(self):
-
-        # if self.estMort is False:
-        #     core.Draw.text(self.color, str(self.niveauFatigue) + " " + str (self.niveauFaim), Vector2(self.position.x - 10, self.position.y - 30), taille=15)
 
         if self.dort:
             core.Draw.text(self.color, "Zzz", Vector2(self.position.x - 10, self.position.y - 30), taille=15)

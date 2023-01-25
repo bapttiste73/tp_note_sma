@@ -31,6 +31,3 @@ class Decomposeur(Agent):
 
     def update(self):
         super().update()
-        if self.body.estMort:
-            core.memory('items').append(Vegetal(self.body.position.x, self.body.position.y))
-            core.memory('agents').remove(self)

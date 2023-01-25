@@ -1,7 +1,36 @@
 {
   "duréeSimu": 600,
   "SuperPredateur": {
-    "nb": 50,
+    "nb": 2,
+    "parametres": {
+      "vitesseMax": [
+        2,
+        3
+      ],
+      "accelMax": [
+        1,
+        3
+      ],
+      "maxFaim": [
+        400,
+        400
+      ],
+      "maxFatigue": [
+        400,
+        500
+      ],
+      "maxReproduction": [
+        80,
+        100
+      ],
+      "esperanceVie": [
+        30,
+        60
+      ]
+    }
+  },
+  "Carnivore": {
+    "nb": 6,
     "parametres": {
       "vitesseMax": [
         2,
@@ -9,11 +38,11 @@
       ],
       "accelMax": [
         1,
-        2
+        4
       ],
       "maxFaim": [
-        200,
-        300
+        400,
+        500
       ],
       "maxFatigue": [
         400,
@@ -22,19 +51,23 @@
       "maxReproduction": [
         80,
         100
+      ],
+      "esperanceVie": [
+        30,
+        130
       ]
     }
   },
   "Herbivore": {
-    "nb": 12,
+    "nb": 5,
     "parametres": {
       "vitesseMax": [
         2,
-        6
+        4
       ],
       "accelMax": [
         1,
-        6
+        3
       ],
       "maxFaim": [
         400,
@@ -45,36 +78,17 @@
         500
       ],
       "maxReproduction": [
-        80,
+        50,
         100
+      ],
+      "esperanceVie": [
+        30,
+        130
       ]
     }
-  },"Carnivore": {
-    "nb": 50,
-    "parametres": {
-      "vitesseMax": [
-        1,
-        5
-      ],
-      "accelMax": [
-        1,
-        5
-      ],
-      "maxFaim": [
-        400,
-        500
-      ],
-      "maxFatigue": [
-        400,
-        500
-      ],
-      "maxReproduction": [
-        80,
-        100
-      ]
-    }
-  },"Decomposeur": {
-    "nb": 50,
+  },
+  "Decomposeur": {
+    "nb": 30,
     "parametres": {
       "vitesseMax": [
         1,
@@ -85,8 +99,8 @@
         2
       ],
       "maxFaim": [
-        300,
-        400
+        9999,
+        99999
       ],
       "maxFatigue": [
         9999,
@@ -95,6 +109,19 @@
       "maxReproduction": [
         49,
         51
+      ],
+      "esperanceVie": [
+        90,
+        130
+      ]
+    }
+  },
+  "Vegetal": {
+    "nb": 20,
+    "parametres": {
+      "cycle": [
+        100,
+        150
       ]
     }
   }
